@@ -1073,7 +1073,7 @@ body, html {
 /* 기술 아이콘 그리드 */
 .icon-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 52px);
+    grid-template-columns: repeat(5, 52px);
     gap: 18px 24px;
     align-items: center;
 }
@@ -2080,7 +2080,7 @@ article .text{font-size: 16px; line-height: 1.8;}
     position: relative;
     z-index: 10;
 }
-.slide2 .s5-inner .texttop{position: relative; top: 0;margin-bottom: 200px;} 
+.slide2 .s5-inner .texttop{position: relative; top: 0;margin-bottom: 52px;} 
 
 /* 텍스트 영역 (높이 및 크기 증가) */
 /* 3. 텍스트 영역: 위(제목) / 아래(정보) 분리 */
@@ -2102,10 +2102,29 @@ article .text{font-size: 16px; line-height: 1.8;}
 }
 
 .p-subtitle { 
-    font-size: 24px; 
-    color: #ACE9FF; /* 포인트 컬러 적용 */
-    margin-bottom: 60px; 
-    text-decoration: underline;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 128px;
+    height: 42px;
+    padding: 0 22px;
+    border: 1px solid rgba(172, 233, 255, 0.9);
+    border-radius: 0;
+    background: rgba(172, 233, 255, 0.08);
+    color: #ACE9FF;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 60px;
+    text-decoration: none;
+    transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+a:hover .p-subtitle {
+    background: #ACE9FF;
+    color: #000;
+    transform: translateY(-2px);
 }
 
 .p-info { margin-bottom: 60px;}
@@ -5062,16 +5081,17 @@ align-items: start;}
     margin-bottom: 10px;
 }
 
-/* 2. 쇼케이스 영역: 이번엔 정말 안 잘리게! */
+/* 2. 쇼케이스 영역: 2줄 고정 그리드 */
 .s7-footer-swiper {
     width: 100%;
+    overflow: visible;
 }
 
 @media (min-width: 1025px) {
     .s7-footer-swiper .swiper-wrapper {
-        display: block !important; /* 슬라이드 기능 완전 해제 */
-        column-count: 3; /* 가로 3줄 */
-        column-gap: 20px; /* 간격 */
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
         width: 100%;
         height: auto !important;
         transform: none !important;
@@ -5079,28 +5099,37 @@ align-items: start;}
 
     .s7-footer-swiper .swiper-slide {
         display: block;
-        width: 100% !important;
-        margin-bottom: 20px; /* 아래 배너와의 간격 */
-        break-inside: avoid; /* [핵심] 이미지 중간에 잘리는 현상 방지 */
-        page-break-inside: avoid;
+        width: auto !important;
+        height: auto;
+        aspect-ratio: 1.78 / 1;
+        margin: 0 !important;
+        overflow: hidden;
+        border-radius: 10px;
+        background: #fff;
+        box-shadow: 0 8px 18px rgba(0,0,0,0.08);
     }
 }
 
-/* 3. 이미지 자체 설정: 크기 달라도 전체 다 보이게 */
-.swiper-slide img {
+/* 3. 이미지 자체 설정: 카드 크기에 맞춰 통일 */
+.s7-footer-swiper .swiper-slide img {
     width: 100%;
-    height: auto !important; /* 높이를 이미지 비율에 맞춤 */
+    height: 100% !important;
+    object-fit: cover;
     display: block;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    border-radius: 0;
+    box-shadow: none;
     transition: transform 0.3s ease;
 }
 
-.swiper-slide img:hover {
+.s7-footer-swiper .swiper-slide img:hover {
     transform: scale(1.02);
 }
 
-/* 4. 모바일: 잘림 방지를 위해 가로 슬라이드로 유지 */
+.s7-footer-swiper .swiper-pagination {
+    display: none;
+}
+
+/* 4. 모바일: 한 줄씩 안정적으로 정렬 */
 @media (max-width: 1024px) {
     .s7-slide.slide3 .s7-header-area {
         flex-direction: column;
@@ -5108,13 +5137,18 @@ align-items: start;}
     }
 
     .s7-footer-swiper .swiper-wrapper {
-        display: flex !important; /* 모바일은 다시 슬라이드 */
-        column-count: auto;
+        display: grid !important;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        transform: none !important;
     }
 
     .s7-footer-swiper .swiper-slide {
-        width: 75% !important;
-        flex-shrink: 0;
+        width: auto !important;
+        height: auto;
+        aspect-ratio: 1.78 / 1;
+        overflow: hidden;
+        border-radius: 10px;
     }
 }
 
