@@ -1245,8 +1245,8 @@ body, html {
 .t-hover-preview {
     position: absolute;
     left: 50%;
-    top: auto;
-    bottom: calc(100% + 14px);
+    top: calc(100% + 14px);
+    bottom: auto;
     width: min(320px, 92%);
     padding: 8px;
     background: rgba(8, 14, 24, 0.96);
@@ -1255,7 +1255,7 @@ body, html {
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
     opacity: 0;
     pointer-events: none;
-    transform: translate(-50%, 8px) scale(0.96);
+    transform: translate(-50%, -8px) scale(0.96);
     transition: opacity 0.28s ease, transform 0.28s ease, box-shadow 0.28s ease;
 }
 
@@ -2169,9 +2169,24 @@ a:hover .p-subtitle {
     margin-bottom: 3px;
 }
 
+.tool-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
 .tool-icons img { 
     width: 35px; 
-    margin-right: 15px; 
+    height: 35px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-right: 0; 
+}
+
+.tool-icons img[src$="git.png"] {
+    background: #f4f4f4;
+    padding: 4px;
+    box-sizing: border-box;
 }
 
 .p-overview .label {
@@ -5122,7 +5137,7 @@ align-items: start;}
 }
 
 .s7-footer-swiper .swiper-slide img:hover {
-    transform: scale(1.02);
+    transform: translateY(10px) scale(1.03);
 }
 
 .s7-footer-swiper .swiper-pagination {
