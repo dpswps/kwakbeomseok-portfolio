@@ -4180,14 +4180,15 @@ align-items: start;}
 
 /* --- [Slide 1] Other Works --- */
 .s7-slide.slide1 {
-    background-color: #002255; /* 짙은 네이비 배경 */
-    color: #fff;height: 100vh;
+    background-color: #ACE9FF;
+    color: #050505;
+    height: 100vh;
 }
 
 .s7-slide.slide1 .s7-inner {
-    width: 90%;
+    width: min(88vw, 1600px);
     max-width: 1600px;
-    height: 85%;
+    height: min(82vh, 780px);
     display: flex;
     flex-direction: column;
     justify-content: space-between; /* 상단 컨텐츠와 하단 바 분리 */
@@ -4198,36 +4199,51 @@ align-items: start;}
 .s7-content-top {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    padding-top: 50px;
+    align-items: center;
+    gap: 90px;
+    padding-top: 0;
 }
 
 /* 좌측 메인 타이틀 */
 .s7-title-wrap .s7-main-text {
-    font-size: 180px;
+    font-family: 'Georgia', serif;
+    font-size: clamp(6rem, 9.8vw, 12rem);
     font-weight: 900;
-    line-height: 1.1;
-    letter-spacing: -5px;
-    text-transform: capitalize;
+    line-height: 0.84;
+    letter-spacing: 0;
+    text-transform: none;
     margin: 0;
+    color: #050505;
+    will-change: transform, opacity, filter;
+}
+
+.s7-title-wrap .s7-main-text + .s7-main-text {
+    margin-top: 70px;
+}
+
+.s7-title-wrap .cover-title-char {
+    display: inline-block;
+    min-width: 0.02em;
+    transform-origin: center 68%;
 }
 
 /* 우측 상세 설명 */
 .s7-description-wrap {
     flex: 0 0 550px; /* 우측 너비 고정 */
-    padding-top: 30px;
+    padding-top: 0;
 }
 
 .s7-sub-title {
-    font-size: 28px;
+    font-size: 30px;
     font-weight: 700;
     margin-bottom: 25px;
+    color: #050505;
 }
 
 .s7-desc-text {
     font-size: 16px;
     line-height: 1.8;
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(5, 5, 5, 0.78);
     margin-bottom: 20px;
     word-break: keep-all;
 }
@@ -4260,7 +4276,8 @@ align-items: start;}
     position: absolute;
     bottom: 0;
     width: 100%;
-    border-top: 2px solid #fff; border-bottom: 2px solid #fff;
+    border-top: 2px solid #050505;
+    border-bottom: 2px solid #050505;
     padding: 25px 0;
     display: flex;
     justify-content: space-between;
