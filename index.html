@@ -210,7 +210,7 @@
         <div class="s4-category-group">
             <h3 class="category-tag">Content Design & Planning</h3>
             <div class="timeline-container">
-                <div class="t-item gallery-item" data-gallery-title="원더블 상세페이지 제작" data-gallery-images="images/네이버 스마트스토어 -  원더블 상세페이지 제작.png">
+                <div class="t-item gallery-item" data-gallery-title="원더블 상세페이지 제작" data-gallery-images="images/네이버 스마트스토어 -  원더블 상세페이지 제작.png|images/원더블_기획안.png|images/원더블_디자인래퍼런스.png|images/원더블_색감레퍼런스.png|images/원더블_볼록거울 상세페이지 제작.png">
                     <span class="t-date">2026.03</span>
                     <button type="button" class="t-capsule gallery-open">원더블 | 기획 및 제작 및 판매</button>
                     <div class="t-details">상세페이지 기획·설계·제작 및 판매 성과 창출</div>
@@ -222,7 +222,7 @@
                     <div class="t-details">정보과학대학 홈페이지의 정보 구조와 사용자 경험 개선을 위한 UI/UX 설계 및 디자인</div>
                     <div class="t-details">100명의 재학생 대상 사용성 테스트 결과, 95%가 개선안에 긍정적으로 평가하며 사용성 향상 검증</div>
                 </div>
-                <div class="t-item gallery-item" data-gallery-title="바프로그 기획 및 프로토타입 제작" data-gallery-images="images/기획,와이어프레임,  정보구조도(IA), 스토리보드.png">
+                <div class="t-item gallery-item" data-gallery-title="바프로그 기획 및 프로토타입 제작" data-gallery-images="images/바프로그_전체.png|images/바프로그_화면설계서 변경 이력.png|images/바프로그_와이어프레임설계.png|images/바프로그_정보구조도.png|images/바프로그_로우파이 스케치.png|images/바프로그_정보설계(러프스케치).png|images/바프로그_자료조사 및 기획.png|images/바프로그_PPT자료.png">
                     <span class="t-date">2024.03 ~ 2024.08</span>
                     <button type="button" class="t-capsule gallery-open">바프로그 | 기획 및 프로토타입 제작</button>
                     <div class="t-details">바디프로필 준비 과정에서 발생하는 기록 관리의 불편함을 해결하기 위한 통합 서비스 기획.</div>
@@ -1660,6 +1660,72 @@
         });
     });
 
+    window.addEventListener("load", () => {
+        const coverConfigs = [
+            {
+                cover: document.querySelector(".section5 .s5-slide.slide1"),
+                titleSelector: ".s5-main-text",
+                wrapSelector: ".section5 .slide1 .s5-title-wrap"
+            },
+            {
+                cover: document.querySelector(".section6 .s6-slide.slide1"),
+                titleSelector: ".s6-main-text",
+                wrapSelector: ".section6 .slide1 .s6-title-wrap"
+            }
+        ];
+
+        coverConfigs.forEach(({ cover, titleSelector, wrapSelector }) => {
+            if (!cover) return;
+
+            const coverChars = [];
+            cover.querySelectorAll(titleSelector).forEach((title) => {
+                const text = title.textContent;
+                title.textContent = "";
+                text.split("").forEach((char) => {
+                    const span = document.createElement("span");
+                    span.className = "cover-title-char";
+                    span.style.setProperty("--i", coverChars.length);
+                    span.textContent = char === " " ? "\u00A0" : char;
+                    title.appendChild(span);
+                    coverChars.push(span);
+                });
+            });
+
+            gsap.set(coverChars, {
+                opacity: 0,
+                y: (index) => (index % 2 ? -72 : 72),
+                x: (index) => (index - (coverChars.length - 1) / 2) * 26,
+                rotation: (index) => [-7, 5, -4, 7][index % 4],
+                filter: "blur(10px)"
+            });
+
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: cover,
+                    start: "top 70%",
+                    toggleActions: "play none none reverse"
+                }
+            })
+            .to(coverChars, {
+                opacity: 1,
+                x: 0,
+                y: 0,
+                rotation: 0,
+                filter: "blur(0px)",
+                duration: 0.92,
+                stagger: 0.045,
+                ease: "back.out(1.6)"
+            })
+            .fromTo(wrapSelector, {
+                scale: 0.96
+            }, {
+                scale: 1,
+                duration: 0.72,
+                ease: "power3.out"
+            }, "-=0.42");
+        });
+    });
+
     /* ================================
        SECTION 6 슬라이드 트랜지션
     ================================ */
@@ -1762,6 +1828,8 @@
             imageButton.className = "t-link-btn t-image-btn gallery-open";
             imageButton.textContent = "이미지 보기";
 
+            row.appendChild(imageButton);
+
             item.querySelectorAll(":scope .t-link-btn:not(.t-image-btn)").forEach((link) => {
                 const parent = link.parentElement;
                 row.appendChild(link);
@@ -1770,7 +1838,6 @@
                 }
             });
 
-            row.appendChild(imageButton);
             item.appendChild(row);
         }
 

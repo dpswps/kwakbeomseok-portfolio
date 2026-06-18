@@ -1808,7 +1808,7 @@ article .text{font-size: 16px; line-height: 1.8;}
     font-weight: 900;
     line-height: 0.82;
     letter-spacing: -5px;
-    text-transform: capitalize;
+    text-transform: none;
 }
 
 .slide1 .s5-main-text.design {
@@ -1959,6 +1959,7 @@ article .text{font-size: 16px; line-height: 1.8;}
     display: block;
     text-align: center;
     position: relative;
+    z-index: 2;
 }
 
 .slide1 .s5-kicker {
@@ -1982,8 +1983,17 @@ article .text{font-size: 16px; line-height: 1.8;}
     font-weight: 900;
     line-height: 0.84;
     letter-spacing: 0;
+    text-transform: none;
     color: #050505;
     text-align: center;
+    margin: 0;
+    will-change: transform, opacity, filter;
+}
+
+.slide1 .s5-main-text .cover-title-char {
+    display: inline-block;
+    min-width: 0.02em;
+    transform-origin: center 68%;
 }
 
 .slide1 .s5-main-text.web {
@@ -2001,7 +2011,7 @@ article .text{font-size: 16px; line-height: 1.8;}
     justify-self: center;
     padding-left: 0;
     position: relative;
-    margin-top: 42px;
+    margin-top: 70px;
 }
 
 .slide1 .s5-main-text.design::before {
@@ -2734,9 +2744,16 @@ a:hover .p-subtitle {
     font-weight: 900;
     line-height: 0.84;
     letter-spacing: 0;
-    text-transform: capitalize;
+    text-transform: none;
     color: #050505;
     margin: 0;
+    will-change: transform, opacity, filter;
+}
+
+.slide1 .s6-main-text .cover-title-char {
+    display: inline-block;
+    min-width: 0.02em;
+    transform-origin: center 68%;
 }
 
 .slide1 .s6-main-text.design {
