@@ -5735,3 +5735,170 @@ align-items: start;}
         background-position: center center;
     }
 }
+
+/* Tracksy purple branding overrides */
+.section6 {
+    --tracksy-purple: #7c5cff;
+    --tracksy-violet: #a55cff;
+    --tracksy-lavender: #c9a4ff;
+    --tracksy-soft: #f3e5ff;
+    --tracksy-ink: #141019;
+}
+
+.s6-slide.slide2 {
+    background:
+        radial-gradient(circle at 78% 22%, rgba(201, 164, 255, 0.38), transparent 32%),
+        linear-gradient(135deg, #fff 0%, #f7efff 48%, #ead6ff 100%);
+}
+
+.s6-header .s6-number,
+.s6-header .s6-subtitle,
+.page-number,
+.node-num,
+.s6-slide.slide4 .s6-bg-label,
+.s6-slide.slide4 .card-title span,
+.s6-slide.slide5 .s6-persona-label,
+.s6-slide.slide5 .user-info .quote,
+.s6-slide.slide6 .s6-label,
+.s6-slide.slide8 .sub-title,
+.s6-slide.slide8 .item-label,
+.s6-slide.slide9 .s6-sub-title,
+.s6-slide.slide9 .s6-solution-arrow,
+.s6-slide.slide10 .s6-label,
+.s6-slide.slide11 .s6-label {
+    color: var(--tracksy-purple);
+}
+
+.s6-detail-item .label,
+.s6-overview .label {
+    color: #6e5b83;
+    opacity: 1;
+}
+
+.s6-bg-box {
+    background:
+        radial-gradient(circle at 18% 78%, rgba(255, 255, 255, 0.34), transparent 26%),
+        linear-gradient(135deg, var(--tracksy-lavender) 0%, var(--tracksy-purple) 100%);
+}
+
+.s6-bg-text {
+    color: rgba(255, 255, 255, 0.18);
+}
+
+.s6-slide.slide2 .s6-mockup-wrap img {
+    width: auto;
+    max-width: 400px;
+    max-height: 82vh;
+    border-radius: 40px;
+    filter: drop-shadow(0 30px 54px rgba(124, 92, 255, 0.38));
+}
+
+.root-node,
+.node-num,
+.nav-item.highlight,
+.s6-slide.slide4 .s6-bottom-highlight,
+.s6-slide.slide6 .core-target,
+.s6-slide.slide9 .s6-status-label.after {
+    background: linear-gradient(135deg, var(--tracksy-purple) 0%, var(--tracksy-violet) 100%);
+}
+
+.flow-node:hover,
+.sub-node:hover {
+    border-color: var(--tracksy-purple);
+}
+
+.gradient-sample {
+    background: linear-gradient(180deg, var(--tracksy-purple) 0%, #b785ff 50%, var(--tracksy-soft) 100%);
+}
+
+.s6-slide.slide4 {
+    background:
+        linear-gradient(rgba(21, 12, 31, 0.82), rgba(21, 12, 31, 0.58)),
+        url(../images/s6-sli4.png) !important;
+}
+
+.s6-slide.slide4 .s6-bg-card,
+.s6-slide.slide5 .s6-persona-card {
+    background: rgba(28, 20, 38, 0.92);
+    border: 1px solid rgba(201, 164, 255, 0.18);
+}
+
+.s6-slide.slide5 .tags span,
+.s6-slide.slide5 .pain-points li {
+    background: rgba(124, 92, 255, 0.16);
+    border-color: rgba(201, 164, 255, 0.28);
+}
+
+.s6-slide.slide5 .card-footer-blue {
+    background: linear-gradient(135deg, var(--tracksy-purple), var(--tracksy-violet));
+    color: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: auto;
+}
+
+.s6-slide.slide6 {
+    background:
+        linear-gradient(rgba(21, 12, 31, 0.55), rgba(21, 12, 31, 0.55)),
+        url(../images/s6-sli6.png) !important;
+}
+
+.s6-slide.slide6 .p-num,
+.s6-slide.slide6 .sol-desc strong {
+    color: var(--tracksy-purple);
+}
+
+.s6-slide.slide6 .circle {
+    background: rgba(124, 92, 255, 0.18);
+    border-color: rgba(124, 92, 255, 0.42);
+}
+
+.s6-slide.slide7 .s6-to-be,
+.s6-slide.slide8 {
+    background: linear-gradient(135deg, #f8efff 0%, #ead7ff 50%, #d0b2ff 100%);
+}
+
+.s6-slide.slide7 .label-box.blue {
+    color: var(--tracksy-purple);
+}
+
+.s6-slide.slide8 .mockup-label,
+.s6-slide.slide9 .s6-item-num {
+    background: rgba(124, 92, 255, 0.14);
+    color: var(--tracksy-purple);
+}
+
+.s6-feature-list li {
+    border-left-color: var(--tracksy-purple);
+    border-right-color: var(--tracksy-purple);
+}
+
+.s6-slide.slide10 {
+    background:
+        linear-gradient(rgba(21, 12, 31, 0.82), rgba(21, 12, 31, 0.82)),
+        url(../images/0213.png) !important;
+}
+
+.s6-slide.slide11 {
+    background: linear-gradient(180deg, #c9a4ff 0%, #f3e5ff 100%);
+}
+
+.section6 .title-main,
+.section6 .brand-title,
+.s6-slide.slide4 .s6-bg-main-title,
+.s6-slide.slide5 .s6-persona-main-title,
+.s6-slide.slide6 .s6-main-title,
+.s6-slide.slide7 .as-is-desc h3,
+.s6-slide.slide7 .to-be-header h3,
+.s6-slide.slide8 .main-title,
+.s6-slide.slide9 .s6-main-title,
+.s6-slide.slide10 .s6-main-title,
+.s6-slide.slide11 .s6-main-title {
+    font-size: 37px;
+    line-height: 1.35;
+    font-weight: 800;
+    letter-spacing: 0;
+}
