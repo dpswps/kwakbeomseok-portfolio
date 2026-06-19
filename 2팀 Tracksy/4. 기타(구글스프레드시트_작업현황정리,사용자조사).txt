@@ -1,0 +1,8 @@
+작업현황
+https://docs.google.com/spreadsheets/d/1JY5d18bKBN9vduwZoo9Cg_uTIcU5Ra4IzP7d-0IDISw/edit?pli=1&gid=0#gid=0
+
+러닝 기록 어플 선호도 관련 설문조사
+https://docs.google.com/forms/d/1ICsfL8TeoY0cOIKz1gkb2KdKh-oVYTNRDlFe67ldq2E/edit
+
+깃허브 주소
+https://github.com/dpswps/app-portfolio-trackSy.git

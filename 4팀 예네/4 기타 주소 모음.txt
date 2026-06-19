@@ -1,0 +1,8 @@
+리디자인 전 주식회사 예네 주소
+https://yene.co.kr/
+
+예네 깃허브 주소(팀)
+https://github.com/stella0526/yene.git
+
+예네 깃허브 주소(곽범석)
+https://github.com/dpswps/web5-portfolio-yene.git
