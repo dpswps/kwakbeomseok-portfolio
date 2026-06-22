@@ -2797,6 +2797,112 @@ button.p-subtitle:hover {
     z-index: 1;
 }
 
+/* 웹 리디자인 Before / After 목업 비교 */
+.section5 .mockup-wrapper.mockup-compare {
+    /* 제목 중심선과 토글을 맞추고 목업 위쪽에 버튼 공간 확보 */
+    margin-top: 84px;
+}
+
+.mockup-compare .before-mockup-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: auto;
+    display: block;
+    z-index: 2;
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    transition: opacity 0.38s ease;
+}
+
+.mockup-compare.show-before .before-mockup-img {
+    opacity: 1;
+}
+
+.mockup-compare .app-mockup-img {
+    position: absolute !important;
+    width: 25% !important;
+    height: auto !important;
+    max-width: 25% !important;
+    right: 5% !important;
+    bottom: -5% !important;
+    z-index: 10;
+    pointer-events: none;
+    filter: drop-shadow(20px 20px 30px rgba(0, 0, 0, 0.5));
+    transform: none !important;
+    transition: opacity 0.3s ease !important;
+}
+
+.mockup-compare.show-before .app-mockup-img {
+    opacity: 0 !important;
+}
+
+.compare-toggle {
+    position: absolute;
+    top: 42px;
+    left: 50%;
+    z-index: 20;
+    display: flex;
+    gap: 4px;
+    padding: 6px;
+    border: 2px solid #ACE9FF;
+    border-radius: 999px;
+    background: #050505;
+    box-shadow:
+        0 0 0 4px rgba(172, 233, 255, 0.18),
+        0 14px 34px rgba(0, 0, 0, 0.42);
+    backdrop-filter: blur(10px);
+    transform: translate(-50%, -100%);
+    pointer-events: auto;
+}
+
+.compare-toggle button {
+    min-width: 78px;
+    border: 0;
+    border-radius: 999px;
+    padding: 10px 15px;
+    background: transparent;
+    color: #fff;
+    font: 800 13px/1 'Pretendard', sans-serif;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: background-color 0.22s ease, color 0.22s ease;
+}
+
+.compare-toggle button.active {
+    background: #ACE9FF;
+    color: #050505;
+    box-shadow: 0 4px 14px rgba(172, 233, 255, 0.38);
+}
+
+.compare-toggle button:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+@media (max-width: 760px) {
+    .section5 .mockup-wrapper.mockup-compare {
+        margin-top: 62px;
+    }
+
+    .compare-toggle {
+        top: 12px;
+        gap: 2px;
+        padding: 4px;
+        border-width: 1px;
+        box-shadow:
+            0 0 0 3px rgba(172, 233, 255, 0.16),
+            0 10px 24px rgba(0, 0, 0, 0.38);
+    }
+
+    .compare-toggle button {
+        min-width: 64px;
+        padding: 8px 11px;
+        font-size: 11px;
+    }
+}
+
 /* 모바일 이미지 고정 (터치 시 커지는 현상 방지 핵심) */
 
 .slide4 .mockup-wrapper img:last-child,
