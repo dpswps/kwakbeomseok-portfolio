@@ -2,9 +2,8 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Kwak Beom Seok - Portfolio</title>
-    <link rel="stylesheet" href="css/style.css?v=20260622-mobile-fix">
+    <link rel="stylesheet" href="css/style.css?v=20260617-yene-claude">
     
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1/bundled/lenis.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -1416,21 +1415,16 @@
 </div>
 
   <script>
+    // 1. Lenis 초기화 (부드러운 스크롤)
+    const lenis = new Lenis();
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
+
     // GSAP 및 ScrollTrigger 등록
     gsap.registerPlugin(ScrollTrigger);
-
-    // 1. Lenis 초기화 (모바일은 네이티브 스크롤을 사용해 튕김 방지)
-    const useSmoothScroll = window.matchMedia('(hover: hover) and (pointer: fine)').matches
-        && window.innerWidth > 1024;
-    const lenis = useSmoothScroll ? new Lenis({ smoothWheel: true }) : null;
-
-    if (lenis) {
-        lenis.on('scroll', ScrollTrigger.update);
-        gsap.ticker.add((time) => {
-            lenis.raf(time * 1000);
-        });
-        gsap.ticker.lagSmoothing(0);
-    }
 
     // 2. 글자 쪼개기
     const nameElement = document.getElementById("mainName");
