@@ -1478,8 +1478,8 @@
 
         gsap.set(nameChars, {
             opacity: 1,
-            x: (index) => (index - (nameChars.length - 1) / 2) * (isMobileViewport ? 18 : 42),
-            y: (index) => (isMobileViewport ? 140 : 270) + (index % 3) * (isMobileViewport ? 18 : 34),
+            x: (index) => (index - (nameChars.length - 1) / 2) * (isMobileViewport ? 4 : 42),
+            y: (index) => (isMobileViewport ? 110 : 270) + (index % 3) * (isMobileViewport ? 12 : 34),
             rotation: (index) => [-10, 7, -4, 12, -8][index % 5],
             scale: 0.9
         });
@@ -1514,9 +1514,9 @@
         .set(".portfolio-svg", { autoAlpha: 0, scale: 0.5 }, "nameForward")
         .to(".job-title", { opacity: 0, y: -10, duration: 2.8, ease: "none" }, "nameForward")
         .to(".main-name", {
-            fontSize: isMobileViewport ? "360px" : "720px",
-            scale: isMobileViewport ? 5.2 : 8.8,
-            x: isMobileViewport ? "-54vw" : "-42vw",
+            fontSize: isMobileViewport ? "240px" : "720px",
+            scale: isMobileViewport ? 3.6 : 8.8,
+            x: isMobileViewport ? "-48vw" : "-42vw",
             y: "11vh",
             letterSpacing: "0px",
             color: "#000",
@@ -1525,7 +1525,7 @@
             ease: "none"
         }, "nameForward")
         .to(".main-name", {
-            "--name-stroke": isMobileViewport ? "300px" : "560px",
+            "--name-stroke": isMobileViewport ? "210px" : "560px",
             duration: 1.45,
             ease: "none"
         }, "nameForward+=2.95")
@@ -1534,8 +1534,17 @@
             duration: 0.18,
             ease: "none"
         }, "nameForward+=4.34")
-        .to(".portfolio-layer", { autoAlpha: 1, duration: 0.3, ease: "none" }, "nameForward+=4.62")
-        .to(".portfolio-svg", { autoAlpha: 1, scale: 1, duration: 0.85, ease: "back.out(1.7)" }, "nameForward+=5.12");
+        .to(".portfolio-layer", {
+            autoAlpha: 1,
+            duration: isMobileViewport ? 0.12 : 0.3,
+            ease: "none"
+        }, isMobileViewport ? "nameForward+=4.28" : "nameForward+=4.62")
+        .to(".portfolio-svg", {
+            autoAlpha: 1,
+            scale: 1,
+            duration: 0.85,
+            ease: "back.out(1.7)"
+        }, isMobileViewport ? "nameForward+=4.55" : "nameForward+=5.12");
 
     /* ================================
        SECTION 2 ~ 4 애니메이션

@@ -6169,13 +6169,18 @@ align-items: start;}
     /* Intro */
     .intro-section {
         height: 100svh;
-        min-height: 620px;
+        height: 100dvh;
+        min-height: 100dvh;
         background: #ACE9FF;
     }
 
+    .text-container {
+        padding-inline: 16px;
+    }
+
     .main-name {
-        max-width: 100vw;
-        font-size: clamp(2.5rem, 12vw, 3.6rem);
+        max-width: calc(100vw - 32px);
+        font-size: clamp(2.2rem, 10.5vw, 3.2rem);
     }
 
     .job-title {
@@ -6183,6 +6188,7 @@ align-items: start;}
     }
 
     .portfolio-layer {
+        inset: 0;
         width: 100%;
         height: 100%;
         background: #000;
@@ -6385,11 +6391,34 @@ align-items: start;}
         gap: 28px;
     }
 
-    .s5-text-area {
+    .section5 .s5-text-area {
+        display: contents;
+    }
+
+    .section5 .texttop {
+        display: contents;
+    }
+
+    .section5 .texttop > .p-title,
+    .section5 .texttop > a:has(.p-title) {
+        order: 1;
         width: 100%;
-        height: auto;
-        flex: none;
-        gap: 30px;
+    }
+
+    .section5 .s5-mockup-area {
+        order: 2;
+    }
+
+    .section5 .texttop > a:has(.p-subtitle),
+    .section5 .texttop > .project-cta-row {
+        order: 3;
+        width: fit-content;
+        max-width: 100%;
+    }
+
+    .section5 .p-info {
+        order: 4;
+        width: 100%;
     }
 
     .p-title {
