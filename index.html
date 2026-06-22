@@ -1359,67 +1359,6 @@
 
 </section>
 
-<section class="section7">
-    <div class="s7-slide slide1">
-        <div class="s7-inner">
-            <div class="s7-title-wrap">
-                <h2 class="s7-main-text">Other</h2>
-                <h2 class="s7-main-text">Works</h2>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="s7-slide slide2">
-    <div class="s7-inner">
-        <div class="s7-info-section">
-            <div class="s7-project-header">
-                <span class="num">01</span>
-                <h2 class="title">포토샵 일러 디자인</h2>
-                <p class="eng-title">Photoshop & Illustrator Design</p>
-            </div>
-
-            <div class="s7-overview">
-                <span class="label">OVERVIEW</span>
-                <p class="desc">
-                    개인 브랜딩 명함과 게임 이벤트 배너, 영화 포스터를 제작하며 콘텐츠 목적에 맞는 시각적 임팩트와 정보 전달력을 실험한 그래픽 디자인 작업입니다.
-                </p>
-            </div>
-
-            <div class="s7-work-meta">
-                <div class="meta-item">
-                    <span class="label">Work</span>
-                    <p>1인 작업<br>디자인 100%</p>
-                </div>
-             
-                <div class="meta-item">
-                    <span class="label">Tool</span>
-                    <div class="tools">
-                        <span class="tool-icon">Ai</span>
-                        <span class="tool-icon">Ps</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="s7-banner-section">
-            <div class="s7-banner-frame">
-                <div class="banner-grid">
-                    <button type="button" class="business-card-toggle" aria-label="명함 앞면 뒷면 전환">
-                        <img src="images/곽범석 명함(앞).png" alt="명함 앞면" data-front="images/곽범석 명함(앞).png" data-back="images/곽범석 명함(뒤).png">
-                    </button>
-                    <img src="images/게임배너.png" alt="게임 배너">
-                    <img src="images/영화포스터.png" alt="영화 포스터">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-</section>
-
-
-
 <div class="gallery-modal" id="ictGallery" aria-hidden="true">
     <div class="gallery-panel" role="dialog" aria-modal="true" aria-label="강원 ICT 이노베이션스퀘어 AI 해커톤 이미지">
         <div class="gallery-stage">
@@ -1686,11 +1625,6 @@
                 cover: document.querySelector(".section6 .s6-slide.slide1"),
                 titleSelector: ".s6-main-text",
                 wrapSelector: ".section6 .slide1 .s6-title-wrap"
-            },
-            {
-                cover: document.querySelector(".section7 .s7-slide.slide1"),
-                titleSelector: ".s7-main-text",
-                wrapSelector: ".section7 .slide1 .s7-title-wrap"
             }
         ];
 
@@ -2011,24 +1945,6 @@
         });
     });
 
-    document.addEventListener('DOMContentLoaded', () => {
-        document.querySelectorAll(".business-card-toggle").forEach((button) => {
-            const image = button.querySelector("img");
-            if (!image) return;
-
-            button.addEventListener("click", () => {
-                const nextSrc = image.src.includes(encodeURI("곽범석 명함(앞).png"))
-                    ? image.dataset.back
-                    : image.dataset.front;
-                image.style.opacity = "0";
-                window.setTimeout(() => {
-                    image.src = nextSrc;
-                    image.alt = nextSrc.includes("뒤") ? "명함 뒷면" : "명함 앞면";
-                    image.style.opacity = "1";
-                }, 120);
-            });
-        });
-    });
 </script>
 </body>
 </html>
