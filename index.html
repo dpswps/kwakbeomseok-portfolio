@@ -2,8 +2,9 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Kwak Beom Seok - Portfolio</title>
-    <link rel="stylesheet" href="css/style.css?v=20260617-yene-claude">
+    <link rel="stylesheet" href="css/style.css?v=20260622-mobile-layout">
     
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1/bundled/lenis.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -1442,16 +1443,23 @@
 </div>
 
   <script>
-    // 1. Lenis 초기화 (부드러운 스크롤)
-    const lenis = new Lenis();
-    lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add((time) => {
-        lenis.raf(time * 1000);
-    });
-    gsap.ticker.lagSmoothing(0);
-
     // GSAP 및 ScrollTrigger 등록
     gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.config({ ignoreMobileResize: true });
+
+    // 1. Lenis 초기화 (터치 기기에서는 네이티브 스크롤 사용)
+    const isMobileViewport = window.matchMedia('(max-width: 768px)').matches;
+    const useSmoothScroll = !isMobileViewport
+        && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const lenis = useSmoothScroll ? new Lenis() : null;
+
+    if (lenis) {
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => {
+            lenis.raf(time * 1000);
+        });
+        gsap.ticker.lagSmoothing(0);
+    }
 
     // 2. 글자 쪼개기
     const nameElement = document.getElementById("mainName");
@@ -1470,8 +1478,8 @@
 
         gsap.set(nameChars, {
             opacity: 1,
-            x: (index) => (index - (nameChars.length - 1) / 2) * 42,
-            y: (index) => 270 + (index % 3) * 34,
+            x: (index) => (index - (nameChars.length - 1) / 2) * (isMobileViewport ? 18 : 42),
+            y: (index) => (isMobileViewport ? 140 : 270) + (index % 3) * (isMobileViewport ? 18 : 34),
             rotation: (index) => [-10, 7, -4, 12, -8][index % 5],
             scale: 0.9
         });
@@ -1495,7 +1503,7 @@
         scrollTrigger: {
             trigger: ".intro-section",
             start: "top top",
-            end: "+=320%",
+            end: isMobileViewport ? "+=230%" : "+=320%",
             scrub: 1.05,
             pin: true,
             anticipatePin: 1
@@ -1506,9 +1514,9 @@
         .set(".portfolio-svg", { autoAlpha: 0, scale: 0.5 }, "nameForward")
         .to(".job-title", { opacity: 0, y: -10, duration: 2.8, ease: "none" }, "nameForward")
         .to(".main-name", {
-            fontSize: "720px",
-            scale: 8.8,
-            x: "-42vw",
+            fontSize: isMobileViewport ? "360px" : "720px",
+            scale: isMobileViewport ? 5.2 : 8.8,
+            x: isMobileViewport ? "-54vw" : "-42vw",
             y: "11vh",
             letterSpacing: "0px",
             color: "#000",
@@ -1517,7 +1525,7 @@
             ease: "none"
         }, "nameForward")
         .to(".main-name", {
-            "--name-stroke": "560px",
+            "--name-stroke": isMobileViewport ? "300px" : "560px",
             duration: 1.45,
             ease: "none"
         }, "nameForward+=2.95")
