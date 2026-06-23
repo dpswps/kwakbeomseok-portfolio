@@ -42,6 +42,92 @@ body, html {
     width: 100%;
 }
 
+/* 상단 프로젝트 바로가기 */
+.project-shortcuts {
+    position: fixed;
+    top: 14px;
+    right: 18px;
+    z-index: 9000;
+    width: min(700px, calc(100vw - 36px));
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+    padding: 8px 12px 10px;
+    border: 1px solid rgba(172, 233, 255, 0.42);
+    border-radius: 14px;
+    background: rgba(5, 5, 8, 0.86);
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
+}
+
+.project-shortcuts.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.project-shortcuts a {
+    min-width: 0;
+    min-height: 34px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 4px;
+    padding: 6px 0 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.34);
+    border-radius: 0;
+    color: #fff;
+    font-family: Georgia, 'Times New Roman', serif;
+    text-decoration: none;
+    transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.shortcut-number {
+    color: #ACE9FF;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+}
+
+.shortcut-name {
+    overflow: hidden;
+    max-width: 100%;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.01em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+}
+
+.project-shortcuts a:hover,
+.project-shortcuts a:focus-visible,
+.project-shortcuts a.active {
+    color: #ACE9FF;
+    border-top-color: #ACE9FF;
+    transform: translateY(-1px);
+}
+
+.project-shortcuts a:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+#introduction,
+#profile,
+#experience-projects,
+#web-projects,
+#app-projects {
+    scroll-margin-top: 80px;
+}
+
 .intro-section {
     height: 100vh;
     width: 100%;
@@ -2288,7 +2374,7 @@ article .text{font-size: 16px; line-height: 1.8;}
 .s5-slide.slide2{
 /* linear-gradient로 어둡게 조절 (0.5는 50%, 0.3은 30%) */
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                url('../images/OVERWACTH_bg.png') no-repeat center center / cover !important;}
+                url('../images/OVERWACTH_bg.webp') no-repeat center center / cover !important;}
 
 .slide2 .s5-inner {
     width: 90%;
@@ -2702,12 +2788,12 @@ button.p-subtitle:hover {
 }
 
 
-.s5-slide.slide4{background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/VOGUE_bg.png') no-repeat center center / cover;}
+.s5-slide.slide4{background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/VOGUE_bg.webp') no-repeat center center / cover;}
 
 /* 슬라이드 6 배경 (slide4 스타일 계승) */
 .s5-slide.slide6 {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                url('../images/danstudio_bg.png') no-repeat center center / cover;
+                url('../images/danstudio_bg.webp') no-repeat center center / cover;
 }
 
 .slide6 .s5-inner {
@@ -2736,7 +2822,7 @@ button.p-subtitle:hover {
 /* 슬라이드 6 배경 (slide4 스타일 계승) */
 .s5-slide.slide8 {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                url('../images/sodambagel-bg.png') no-repeat center center / cover;
+                url('../images/sodambagel-bg.webp') no-repeat center center / cover;
 }
 
 .slide8 .s5-inner {
@@ -2761,7 +2847,7 @@ button.p-subtitle:hover {
 
 .s5-slide.slide10 {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                url('../images/myprotain-bg.png') no-repeat center center / cover;
+                url('../images/myprotain-bg.webp') no-repeat center center / cover;
 }
 
 /* 목업 전체 영역 */
@@ -2973,7 +3059,7 @@ button.p-subtitle:hover {
 /* icannote */
 .s5-slide.slide12 {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                url('../images/yene-bg.png') no-repeat center center / cover;
+                url('../images/yene-bg.webp') no-repeat center center / cover;
 }
 
 /* 목업 전체 영역 */
@@ -3793,7 +3879,7 @@ body .slide6 .mockup-wrapper a img:last-child {position: relative !important; wi
 /* 슬라이드 전체 배경 */
 .s6-slide.slide4 {
     background:linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4)), 
-     url(../images/tracksy-running-bg.png)!important;
+     url(../images/tracksy-running-bg.webp)!important;
     background-size: cover !important;
     background-position: center !important;
     color: #fff;
@@ -4127,7 +4213,7 @@ body .slide6 .mockup-wrapper a img:last-child {position: relative !important; wi
 /* 슬라이드 전체 배경 */
 .s6-slide.slide6 {
      background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-     url(/images/s6-sli6.png)!important;
+     url(/images/s6-sli6.webp)!important;
     color: #fff;
     padding: 80px 0;
 }
@@ -4795,7 +4881,7 @@ align-items: start;}
 /* --- [Slide 10] Consumption Analysis 레이아웃 --- */
 .s6-slide.slide10 {
     background:linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
-     url(../images/tracksy-record-flow-bg.png)!important;
+     url(../images/tracksy-record-flow-bg.webp)!important;
     background-size: cover !important;
     background-position: center !important;
     color: #fff;
@@ -5200,7 +5286,7 @@ align-items: start;}
 /* --- [Slide 13] iPhone Mockup Background 레이아웃 --- */
 .s6-slide.slide13 {
     /* 이미지를 배경으로 설정 */
-    background: url('../images/sla1313.png') no-repeat center center;
+    background: url('../images/sla1313.webp') no-repeat center center;
     
     /* 배경 이미지가 요소의 전체 크기를 덮도록 설정 (꽉 차게 함) */
     background-size: cover;
@@ -5957,7 +6043,7 @@ align-items: start;}
     margin: 0 auto;
     
     /* 배경 이미지 설정 */
-    background-image: url('../images/book2.png');
+    background-image: url('../images/book2.webp');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover; /* 여백 없이 꽉 채움 */
@@ -6055,7 +6141,7 @@ align-items: start;}
 .s6-slide.slide4 {
     background:
         linear-gradient(rgba(21, 12, 31, 0.82), rgba(21, 12, 31, 0.58)),
-        url(../images/tracksy-running-bg.png) !important;
+        url(../images/tracksy-running-bg.webp) !important;
     background-size: cover !important;
     background-position: center !important;
 }
@@ -6086,7 +6172,7 @@ align-items: start;}
 .s6-slide.slide6 {
     background:
         linear-gradient(rgba(21, 12, 31, 0.55), rgba(21, 12, 31, 0.55)),
-        url(../images/s6-sli6.png) !important;
+        url(../images/s6-sli6.webp) !important;
 }
 
 .s6-slide.slide6 .p-num,
@@ -6122,7 +6208,7 @@ align-items: start;}
 .s6-slide.slide10 {
     background:
         linear-gradient(rgba(21, 12, 31, 0.82), rgba(21, 12, 31, 0.82)),
-        url(../images/tracksy-record-flow-bg.png) !important;
+        url(../images/tracksy-record-flow-bg.webp) !important;
     background-size: cover !important;
     background-position: center !important;
 }
@@ -6874,6 +6960,43 @@ align-items: start;}
     .resource-panel {
         width: calc(100% - 24px);
         max-height: calc(100dvh - 24px);
+    }
+}
+
+@media (max-width: 768px) {
+    .project-shortcuts {
+        top: max(10px, env(safe-area-inset-top));
+        right: 4px;
+        left: 4px;
+        width: auto;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 2px;
+        padding: 8px 4px 10px;
+        border-radius: 10px;
+        transform: translateY(-10px);
+    }
+
+    .project-shortcuts.is-visible {
+        transform: translateY(0);
+    }
+
+    .project-shortcuts a {
+        min-width: 0;
+        min-height: 40px;
+        gap: 5px;
+        padding-top: 7px;
+        align-items: flex-start;
+    }
+
+    .shortcut-number {
+        font-size: 8px;
+        letter-spacing: 0.06em;
+    }
+
+    .shortcut-name {
+        font-size: clamp(6.8px, 1.85vw, 8.5px);
+        letter-spacing: 0;
+        text-align: left;
     }
 }
 
