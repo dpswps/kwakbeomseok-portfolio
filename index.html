@@ -1729,12 +1729,15 @@
     document.addEventListener('DOMContentLoaded', () => {
         const modal = document.getElementById("ictGallery");
         const closeBtn = modal?.querySelector(".gallery-close");
+        const stage = modal?.querySelector(".gallery-stage");
         const mainImg = modal?.querySelector(".gallery-main-img");
         const thumbs = modal?.querySelector(".gallery-thumbs");
         let galleryImages = [];
         let currentIndex = 0;
+        let imageChangeTimer;
+        let zoomLevel = 1;
 
-        if (!modal || !closeBtn || !mainImg || !thumbs) return;
+        if (!modal || !closeBtn || !stage || !mainImg || !thumbs) return;
 
         document.querySelectorAll(".gallery-item").forEach((item) => {
             const images = getItemImages(item);
@@ -1830,6 +1833,7 @@
                 button.className = "gallery-thumb";
                 button.setAttribute("aria-label", `${index + 1}번 이미지 보기`);
                 button.innerHTML = `<img src="${src}" alt="">`;
+                button.addEventListener("mouseenter", () => setImage(index));
                 button.addEventListener("click", () => setImage(index));
                 thumbs.appendChild(button);
             });
@@ -1838,15 +1842,58 @@
         function setImage(index) {
             if (!galleryImages.length) return;
             currentIndex = (index + galleryImages.length) % galleryImages.length;
+
+            [...thumbs.querySelectorAll(".gallery-thumb")].forEach((button, thumbIndex) => {
+                const isActive = thumbIndex === currentIndex;
+                button.classList.toggle("active", isActive);
+                button.setAttribute("aria-current", isActive ? "true" : "false");
+            });
+
+            const nextSrc = galleryImages[currentIndex];
+            window.clearTimeout(imageChangeTimer);
+            if (mainImg.getAttribute("src") === nextSrc) {
+                mainImg.classList.remove("changing");
+                return;
+            }
+
+            resetImageZoom();
             mainImg.classList.add("changing");
-            window.setTimeout(() => {
-                mainImg.src = galleryImages[currentIndex];
+            imageChangeTimer = window.setTimeout(() => {
+                mainImg.src = nextSrc;
                 mainImg.classList.remove("changing");
             }, 140);
-            [...thumbs.querySelectorAll(".gallery-thumb")].forEach((button, thumbIndex) => {
-                button.classList.toggle("active", thumbIndex === currentIndex);
-            });
         }
+
+        function resetImageZoom() {
+            zoomLevel = 1;
+            mainImg.style.transform = "scale(1)";
+            mainImg.style.transformOrigin = "center center";
+            mainImg.classList.remove("zoomed");
+        }
+
+        stage.addEventListener("wheel", (event) => {
+            if (!modal.classList.contains("active")) return;
+            event.preventDefault();
+            event.stopPropagation();
+
+            const rect = stage.getBoundingClientRect();
+            const originX = ((event.clientX - rect.left) / rect.width) * 100;
+            const originY = ((event.clientY - rect.top) / rect.height) * 100;
+            const zoomStep = event.deltaY < 0 ? 0.25 : -0.25;
+            const nextZoom = Math.min(4, Math.max(1, zoomLevel + zoomStep));
+
+            if (nextZoom > zoomLevel) {
+                mainImg.style.transformOrigin = `${originX}% ${originY}%`;
+            }
+
+            zoomLevel = nextZoom;
+            mainImg.style.transform = `scale(${zoomLevel})`;
+            mainImg.classList.toggle("zoomed", zoomLevel > 1);
+
+            if (zoomLevel === 1) {
+                mainImg.style.transformOrigin = "center center";
+            }
+        }, { passive: false });
 
         function openGallery(images, title, startIndex = 0) {
             galleryImages = images;
@@ -1859,6 +1906,8 @@
         }
 
         function closeGallery() {
+            window.clearTimeout(imageChangeTimer);
+            resetImageZoom();
             modal.classList.remove("active");
             modal.setAttribute("aria-hidden", "true");
             document.body.classList.remove("gallery-lock");

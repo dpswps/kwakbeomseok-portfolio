@@ -1666,7 +1666,14 @@ body, html {
     display: block;
     opacity: 1;
     transform: scale(1);
-    transition: opacity 0.22s ease, transform 0.22s ease;
+    transform-origin: center center;
+    cursor: zoom-in;
+    will-change: transform;
+    transition: opacity 0.22s ease, transform 0.18s ease;
+}
+
+.gallery-stage img.zoomed {
+    cursor: zoom-out;
 }
 
 .gallery-stage img.changing {
@@ -3786,7 +3793,9 @@ body .slide6 .mockup-wrapper a img:last-child {position: relative !important; wi
 /* 슬라이드 전체 배경 */
 .s6-slide.slide4 {
     background:linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4)), 
-     url(../images/s6-sli4.png)!important;
+     url(../images/tracksy-running-bg.png)!important;
+    background-size: cover !important;
+    background-position: center !important;
     color: #fff;
     padding: 60px 0;
 }
@@ -4786,7 +4795,9 @@ align-items: start;}
 /* --- [Slide 10] Consumption Analysis 레이아웃 --- */
 .s6-slide.slide10 {
     background:linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
-     url(/images/0213.png)!important;
+     url(../images/tracksy-record-flow-bg.png)!important;
+    background-size: cover !important;
+    background-position: center !important;
     color: #fff;
     height: auto;
     padding: 60px 0;
@@ -6044,7 +6055,9 @@ align-items: start;}
 .s6-slide.slide4 {
     background:
         linear-gradient(rgba(21, 12, 31, 0.82), rgba(21, 12, 31, 0.58)),
-        url(../images/s6-sli4.png) !important;
+        url(../images/tracksy-running-bg.png) !important;
+    background-size: cover !important;
+    background-position: center !important;
 }
 
 .s6-slide.slide4 .s6-bg-card,
@@ -6109,7 +6122,9 @@ align-items: start;}
 .s6-slide.slide10 {
     background:
         linear-gradient(rgba(21, 12, 31, 0.82), rgba(21, 12, 31, 0.82)),
-        url(../images/0213.png) !important;
+        url(../images/tracksy-record-flow-bg.png) !important;
+    background-size: cover !important;
+    background-position: center !important;
 }
 
 .s6-slide.slide11 {
