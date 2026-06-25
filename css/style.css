@@ -2014,6 +2014,12 @@ article .text{font-size: 16px; line-height: 1.8;}
     justify-content: center;
 }
 
+.section5 .s5-slide:not(.slide1) {
+    box-sizing: border-box;
+    padding-top: clamp(96px, 8vh, 132px);
+    padding-bottom: clamp(72px, 6vh, 108px);
+}
+
 /* 첫 번째 슬라이드 배경 및 기본 설정 */
 .s5-slide.slide1 {
     background-color: #002255; 
@@ -2388,6 +2394,11 @@ article .text{font-size: 16px; line-height: 1.8;}
 }
 .slide2 .s5-inner .texttop{position: relative; top: 0;} 
 
+.section5 .slide2 .s5-text-area {
+    padding-top: 28px;
+    box-sizing: border-box;
+}
+
 /* 텍스트 영역 (높이 및 크기 증가) */
 /* 3. 텍스트 영역: 위(제목) / 아래(정보) 분리 */
 .s5-text-area { 
@@ -2464,6 +2475,19 @@ button.p-subtitle:hover {
     margin-bottom: 35px; /* 항목 간 간격 대폭 확대 */
 }
 
+.section5 .p-info {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 18px;
+    align-items: start;
+    max-width: 430px;
+}
+
+.section5 .info-item {
+    min-width: 0;
+    margin-bottom: 0;
+}
+
 .info-item .label { 
     display: block; 
     font-size: 14px; 
@@ -2482,12 +2506,23 @@ button.p-subtitle:hover {
 }
 
 .info-item .val { 
-    font-size: 18px; 
+    font-size: 16px;
+    line-height: 1.45;
     font-weight: 500; 
     color: #fff;
+    word-break: keep-all;
 }
+
+.info-item .summary-val {
+    max-width: 360px;
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.82);
+}
+
 .info-item .val2 { 
-    margin-top: 10px;
+    margin-top: 6px;
     font-size: 14px; 
     font-weight: 400; 
     color: #fff;
@@ -2503,12 +2538,12 @@ button.p-subtitle:hover {
 .tool-icons {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 8px;
 }
 
 .tool-icons img { 
-    width: 35px; 
-    height: 35px;
+    width: 32px;
+    height: 32px;
     object-fit: contain;
     border-radius: 8px;
     margin-right: 0; 
@@ -6526,7 +6561,7 @@ align-items: start;}
 
     .section5 .s5-slide:not(.slide1) {
         min-height: auto;
-        padding: 68px 0 86px;
+        padding: 112px 0 96px;
         align-items: flex-start;
     }
 
@@ -6571,6 +6606,7 @@ align-items: start;}
     .section5 .p-info {
         order: 4;
         width: 100%;
+        display: block;
     }
 
     .p-title {
