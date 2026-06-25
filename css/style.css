@@ -4672,31 +4672,37 @@ align-items: start;}
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 60px;
+    gap: clamp(42px, 4vw, 72px);
 }
 
 /* 좌측 휴대폰 목업 스타일 */
 .s6-slide.slide8 .s6-mockup-container {
     display: flex;
-    gap: 20px;
+    gap: clamp(18px, 1.8vw, 30px);
     flex-shrink: 0;
+    align-items: flex-end;
+    overflow: visible;
+    padding: 44px 0 18px;
 }
 
 .s6-slide.slide8 .s6-phone-mockup {
     position: relative;
-    width: 238px;
-    height: 532px;
-    border-radius: 22px; /* 요청하신 Border Radius */
+    width: clamp(245px, 14.2vw, 285px);
+    height: auto;
+    border-radius: 34px;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    background: transparent;
+    box-shadow: none;
     display: flex;
     flex-direction: column;
 }
 
 .s6-slide.slide8 .s6-phone-mockup img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    border-radius: inherit;
 }
 
 .s6-slide.slide8 .mockup-label {
@@ -4712,6 +4718,8 @@ align-items: start;}
 /* 우측 설명 영역 스타일 */
 .s6-slide.slide8 .s6-solution-text {
     flex: 1;
+    min-width: 0;
+    max-width: 700px;
 }
 
 .s6-slide.slide8 .solution-header {
@@ -4769,10 +4777,19 @@ align-items: start;}
 }
 
 /* 반응형 처리 */
-@media (max-width: 1400px) {
-    .s6-slide.slide8 .s6-inner { flex-direction: column; text-align: center; }
-    .s6-slide.slide8 .s6-mockup-container { justify-content: center; }
-    .s6-slide.slide8 .mockup-label { top: 10px; color: #fff; background: rgba(0,0,0,0.5); padding: 2px 10px; border-radius: 10px; }
+@media (max-width: 1400px) and (min-width: 769px) {
+    .s6-slide.slide8 .s6-inner {
+        width: 94%;
+        gap: 34px;
+    }
+
+    .s6-slide.slide8 .s6-phone-mockup {
+        width: clamp(210px, 16vw, 245px);
+    }
+
+    .s6-slide.slide8 .s6-mockup-container {
+        gap: 14px;
+    }
 }
 
 /* --- [Slide 9] Usability Test 레이아웃 --- */
@@ -4794,12 +4811,16 @@ align-items: start;}
 /* 좌측 목업 배치 */
 .s6-slide.slide9 .s6-mockup-area {
     display: flex;
-    gap: 30px;
+    gap: 28px;
     flex-shrink: 0;
+    align-items: flex-start;
+    overflow: visible;
 }
 
 .s6-slide.slide9 .s6-phone-wrap {
     text-align: center;
+    display: flex;
+    align-items: center;
 }
 
 .s6-slide.slide9 .s6-status-label {
@@ -4818,17 +4839,20 @@ align-items: start;}
 }
 
 .s6-slide.slide9 .s6-phone-mockup {
- /* 요청 규격 */
-    height: 665px; /* 요청 규격 */
-    border-radius: 22px; /* 요청 Radius */
-    background: #f8fbff;
-    overflow: hidden;}
+    width: clamp(300px, 18vw, 340px);
+    height: auto;
+    border-radius: 34px;
+    background: transparent;
+    overflow: hidden;
+}
 
 
 .s6-slide.slide9 .s6-phone-mockup img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    border-radius: inherit;
 }
 
 /* 우측 설명 영역 */
@@ -4910,7 +4934,7 @@ align-items: start;}
 @media (max-width: 1200px) {
     .s6-slide.slide9 .s6-inner { flex-direction: column; }
     .s6-slide.slide9 .s6-mockup-area { gap: 15px; }
-    .s6-slide.slide9 .s6-phone-mockup { width: 240px; height: 537px; }
+    .s6-slide.slide9 .s6-phone-mockup { width: min(72vw, 300px); height: auto; }
 }
 
 /* --- [Slide 10] Consumption Analysis 레이아웃 --- */
@@ -5017,17 +5041,21 @@ align-items: start;}
 
 .s6-slide.slide10 .screen-item {
     flex: 1;
-    background: #fff;
-    border-radius: 20px;
+    background: #050507;
+    border-radius: 34px;
     overflow: hidden;
     height: 618px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    padding: 4px;
+    box-shadow: 0 16px 38px rgba(0,0,0,0.42);
+    box-sizing: border-box;
 }
 
 .s6-slide.slide10 .screen-item img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    border-radius: 30px;
+    display: block;
 }
 
 /* 우측 결과 목업 */
@@ -5039,16 +5067,24 @@ align-items: start;}
 
 .s6-slide.slide10 .iphone-frame {
     width: 300px;
-    height: 650px;
-    border-radius: 45px;
-  
+    height: auto;
+    border-radius: 38px;
+    background: transparent;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: visible;
     transform: translateY(-20px); /* 살짝 위로 띄움 */
 }
 
 .s6-slide.slide10 .iphone-frame img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    padding: 4px;
+    background: #050507;
+    box-sizing: border-box;
+    object-fit: contain;
+    border-radius: 38px;
+    display: block;
 }
 
 /* 반응형 모바일 처리 */
@@ -5056,7 +5092,7 @@ align-items: start;}
     .s6-slide.slide10 .s6-content-body { flex-direction: column; align-items: center; }
     .s6-slide.slide10 .s6-process-screens { flex-wrap: wrap; justify-content: center; }
     .s6-slide.slide10 .screen-item { min-width: 200px; height: 350px; }
-    .s6-slide.slide10 .iphone-frame { width: 280px; height: 570px; }
+    .s6-slide.slide10 .iphone-frame { width: 280px; height: auto; }
 }
 
 /* --- [Slide 11] Other Outfit Solutions 레이아웃 --- */
@@ -6902,14 +6938,22 @@ align-items: start;}
         justify-content: flex-start;
         gap: 14px;
         overflow-x: auto;
-        padding: 8px 4px 18px;
+        padding: 42px 4px 18px;
         scroll-snap-type: x mandatory;
     }
 
     .s6-slide.slide8 .s6-phone-mockup,
     .s6-slide.slide9 .s6-phone-wrap {
-        min-width: 66vw;
+        min-width: min(72vw, 285px);
         scroll-snap-align: center;
+    }
+
+    .s6-slide.slide8 .mockup-label {
+        top: -34px;
+        color: #7c5cff;
+        background: transparent;
+        padding: 0;
+        border-radius: 0;
     }
 
     .s6-slide.slide8 .s6-solution-text,
