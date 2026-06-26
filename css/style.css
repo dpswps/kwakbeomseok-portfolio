@@ -2769,7 +2769,7 @@ button.p-subtitle:hover {
 /* 슬라이드 4 전용 배경 및 정렬 */
 .s5-slide.slide4 {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                url('../images/5-4bg.png') no-repeat center center / cover;
+                url('../images/VOGUE_bg.webp') no-repeat center center / cover;
 }
 
 .slide4 .s5-inner {
@@ -4690,7 +4690,7 @@ align-items: start;}
     width: clamp(245px, 14.2vw, 285px);
     height: auto;
     border-radius: 34px;
-    overflow: hidden;
+    overflow: visible;
     background: transparent;
     box-shadow: none;
     display: flex;
@@ -4713,6 +4713,8 @@ align-items: start;}
     font-size: 16px;
     font-weight: 700;
     color: #5da8ff;
+    z-index: 2;
+    white-space: nowrap;
 }
 
 /* 우측 설명 영역 스타일 */
@@ -6265,9 +6267,13 @@ align-items: start;}
     color: var(--tracksy-purple);
 }
 
-.s6-slide.slide8 .mockup-label,
 .s6-slide.slide9 .s6-item-num {
     background: rgba(124, 92, 255, 0.14);
+    color: var(--tracksy-purple);
+}
+
+.s6-slide.slide8 .mockup-label {
+    background: transparent;
     color: var(--tracksy-purple);
 }
 
